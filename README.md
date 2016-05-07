@@ -1,4 +1,4 @@
-# fingerd
+# Code based on "Haskell Programming from First Principles"
 
 ## Development
 
