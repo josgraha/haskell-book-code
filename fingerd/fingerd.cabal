@@ -4,7 +4,7 @@ synopsis:             Finger Daemon
 description:          Please see README.md
 homepage:             https://github.com/rcook/haskell-book-code
 license:              MIT
-license-file:         LICENSE
+license-file:         ../LICENSE
 author:               Richard Cook
 maintainer:           rcook@rcook.org
 copyright:            2016 Richard Cook
