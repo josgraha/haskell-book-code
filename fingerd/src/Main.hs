@@ -93,7 +93,7 @@ returnUsers soc db = do
 
 handleQuery :: Socket -> SQLite.Connection -> IO ()
 handleQuery soc db = do
-    message <- recv soc 1024
+    message <- recv soc maxMessageLength
     print message
     case message of
         "\r\n" -> returnUsers soc db
