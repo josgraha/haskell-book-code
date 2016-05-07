@@ -1,5 +1,5 @@
 build:
-	hdt build
+	stack build
 
 debug: build
 	stack exec sudo debug
