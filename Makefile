@@ -10,5 +10,8 @@ ghci-fingerd:
 ghci-debug:
 	stack ghci --main-is fingerd:exe:debug
 
+init: build
+	stack exec fingerd init
+
 run: build
-	stack exec sudo fingerd
+	stack exec sudo fingerd run
