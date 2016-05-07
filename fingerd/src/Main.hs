@@ -4,7 +4,7 @@
 module Main (main) where
 
 import           Control.Exception (Exception, bracket, throwIO)
-import           Control.Monad (forever)
+import           Control.Monad (forever, when)
 import qualified Data.ByteString as BS
 import           Data.ByteString (ByteString)
 import           Data.List (intersperse)
@@ -17,6 +17,7 @@ import qualified Database.SQLite.Simple.Types as SQLite
 import           Network.Socket hiding (close, recv)
 import           Network.Socket.ByteString (recv, sendAll)
 import           System.Environment (getArgs)
+import           System.Exit (exitFailure)
 
 import Queries
 import User
@@ -128,7 +129,14 @@ runServer = withSocketsDo $ do
 main :: IO ()
 main = do
     args <- getArgs
+    when (null args) $ do
+        putStrLn "Please specify command"
+        exitFailure
+
     let arg = head args
     case arg of
         "init" -> createDatabase
         "run" -> runServer
+        _ -> do
+            putStrLn $ "Invalid command: " ++ arg
+            exitFailure
